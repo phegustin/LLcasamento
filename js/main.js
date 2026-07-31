@@ -1,0 +1,267 @@
+// ============================================
+// SCRIPT PRINCIPAL DO SITE
+// ============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarCabecalho();
+  renderizarPresentes();
+  configurarModal();
+  configurarFiltros();
+  configurarScrollSuave();
+  configurarAnimações();
+});
+
+// ---- Renderização do Cabeçalho ----
+
+function renderizarCabecalho() {
+  const { casal } = CONFIG;
+
+  const monogramaEl = document.getElementById("monograma");
+  if (monogramaEl) monogramaEl.textContent = casal.monograma;
+
+  const nomesEl = document.getElementById("nomes-casal");
+  if (nomesEl) nomesEl.textContent = `${casal.noivo} & ${casal.noiva}`;
+
+  const dataEl = document.getElementById("data-casamento");
+  if (dataEl) dataEl.textContent = casal.dataCasamento;
+
+  const msgEl = document.getElementById("mensagem-boas-vindas");
+  if (msgEl) msgEl.textContent = casal.mensagemBoasVindas;
+
+  const historiaEl = document.getElementById("historia-casal");
+  if (historiaEl) historiaEl.textContent = casal.historiaCasal;
+
+  document.title = `${casal.noivo} & ${casal.noiva} | Lista de Presentes`;
+}
+
+// ---- Renderização dos Presentes ----
+
+function renderizarPresentes(filtro = "todos") {
+  const container = document.getElementById("lista-presentes");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const presentes =
+    filtro === "todos"
+      ? CONFIG.presentes
+      : CONFIG.presentes.filter((p) => p.categoria === filtro);
+
+  presentes.forEach((presente, index) => {
+    const card = document.createElement("div");
+    card.className = "gift-card";
+    card.style.animationDelay = `${index * 0.08}s`;
+    card.innerHTML = `
+      <div class="gift-image-wrapper">
+        <img 
+          src="${presente.imagem}" 
+          alt="${presente.titulo}"
+          onerror="this.src='assets/images/placeholder-gift.svg'"
+          loading="lazy"
+        />
+        <div class="gift-category-badge">${formatarCategoria(presente.categoria)}</div>
+      </div>
+      <div class="gift-info">
+        <h3 class="gift-title">${presente.titulo}</h3>
+        <p class="gift-description">${presente.descricao}</p>
+        <div class="gift-footer">
+          <span class="gift-price">${formatarMoeda(presente.valor)}</span>
+          <button class="btn-presentear" data-id="${presente.id}" aria-label="Presentear ${presente.titulo}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+            Presentear
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  // Atachar eventos aos botões
+  document.querySelectorAll(".btn-presentear").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.dataset.id, 10);
+      const presente = CONFIG.presentes.find((p) => p.id === id);
+      if (presente) abrirModalPIX(presente);
+    });
+  });
+}
+
+// ---- Filtros ----
+
+function configurarFiltros() {
+  const botoes = document.querySelectorAll(".filter-btn");
+  botoes.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      botoes.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderizarPresentes(btn.dataset.filter);
+    });
+  });
+}
+
+// ---- Modal PIX ----
+
+function configurarModal() {
+  const modal = document.getElementById("modal-pix");
+  const closeBtn = document.getElementById("btn-fechar-modal");
+  const overlay = document.getElementById("modal-overlay");
+
+  if (closeBtn) closeBtn.addEventListener("click", fecharModal);
+  if (overlay) overlay.addEventListener("click", fecharModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+      fecharModal();
+    }
+  });
+}
+
+function abrirModalPIX(presente) {
+  const modal = document.getElementById("modal-pix");
+  if (!modal) return;
+
+  const { pix } = CONFIG;
+  const txid = `PRESENTE${presente.id}`;
+
+  // Gerar código PIX
+  const codigoPIX = gerarCodigoPIX({
+    chavePIX: pix.chave,
+    nomeTitular: pix.titular,
+    cidade: pix.cidade,
+    valor: presente.valor,
+    descricao: presente.titulo,
+    txid: txid,
+  });
+
+  // Preencher dados
+  document.getElementById("modal-titulo").textContent = presente.titulo;
+  document.getElementById("modal-valor").textContent = formatarMoeda(
+    presente.valor
+  );
+  document.getElementById("modal-chave-pix").textContent = pix.chave;
+  document.getElementById("modal-titular").textContent = pix.titular;
+  document.getElementById("codigo-pix-texto").textContent = codigoPIX;
+
+  // Gerar QR Code
+  const qrContainer = document.getElementById("qrcode");
+  qrContainer.innerHTML = "";
+  new QRCode(qrContainer, {
+    text: codigoPIX,
+    width: 220,
+    height: 220,
+    colorDark: "#2d3a2e",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M,
+  });
+
+  // Botão copiar
+  const btnCopiar = document.getElementById("btn-copiar-pix");
+  btnCopiar.onclick = async () => {
+    const sucesso = await copiarParaClipboard(codigoPIX);
+    if (sucesso) {
+      const textoOriginal = btnCopiar.innerHTML;
+      btnCopiar.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Copiado!
+      `;
+      btnCopiar.classList.add("copied");
+      setTimeout(() => {
+        btnCopiar.innerHTML = textoOriginal;
+        btnCopiar.classList.remove("copied");
+      }, 2500);
+    }
+  };
+
+  // Botão WhatsApp
+  const btnWhatsapp = document.getElementById("btn-confirmar-whatsapp");
+  if (btnWhatsapp) {
+    const mensagem = encodeURIComponent(
+      `${CONFIG.contato.mensagemConfirmacao}\n\n🎁 Presente: ${presente.titulo}\n💰 Valor: ${formatarMoeda(presente.valor)}`
+    );
+    btnWhatsapp.href = `https://wa.me/${CONFIG.contato.whatsapp}?text=${mensagem}`;
+  }
+
+  // Mostrar modal
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharModal() {
+  const modal = document.getElementById("modal-pix");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
+// ---- Scroll Suave ----
+
+function configurarScrollSuave() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+}
+
+// ---- Animações com Intersection Observer ----
+
+function configurarAnimações() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document
+    .querySelectorAll(".animate-on-scroll")
+    .forEach((el) => observer.observe(el));
+}
+
+// ---- Utilitários ----
+
+function formatarMoeda(valor) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+}
+
+function formatarCategoria(cat) {
+  const mapa = {
+    "lua-de-mel": "🌙 Lua de Mel",
+    casa: "🏠 Casa",
+    quarto: "🛏️ Quarto",
+    sala: "🛋️ Sala",
+    cozinha: "🍳 Cozinha",
+  };
+  return mapa[cat] || cat;
+}
+
+// ---- Header scroll effect ----
+
+let lastScroll = 0;
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > 80) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+
+  lastScroll = currentScroll;
+});
