@@ -29,13 +29,13 @@ const CONFIG = {
       horario: "10:00h",
       local: "Paróquia São Francisco de Assis",
       endereco: "Av. Plácido de Castro, nº 584 — Caranazal",
-      mapa: "https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia+S%C3%A3o+Francisco+de+Assis%2C+Av.+Pl%C3%A1cido+de+Castro%2C+584%2C+Caranazal%2C+Santar%C3%A9m+-+PA",
+      mapa: "https://maps.app.goo.gl/TBpAU4DH94j4EPoA6",
     },
     recepcao: {
       horario: "12:00h",
       local: "Hotel London",
       endereco: "Rua Lameira Bittencourt, nº 41 — Centro",
-      mapa: "https://www.google.com/maps/search/?api=1&query=Hotel+London%2C+Rua+Lameira+Bittencourt%2C+41%2C+Centro%2C+Santar%C3%A9m+-+PA",
+      mapa: "https://maps.app.goo.gl/Mg7W9d4JYYWypqjZA",
     },
   },
 
