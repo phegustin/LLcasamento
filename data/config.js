@@ -29,7 +29,7 @@ const CONFIG = {
       horario: "10:00h",
       local: "Paróquia São Francisco de Assis",
       endereco: "Av. Plácido de Castro, nº 584 — Caranazal",
-      mapa: "https://maps.app.goo.gl/TBpAU4DH94j4EPoA6",
+      mapa: "https://www.google.com/maps/place/Par%C3%B3quia+S%C3%A3o+Francisco+de+Assis/@-2.4334585,-54.7670951,14z/data=!4m10!1m2!2m1!1sPar%C3%B3quia+S%C3%A3o+Francisco+de+Assis,+Av.+Pl%C3%A1cido+de+Castro,+584,+Caranazal,+Santar%C3%A9m+-+PA!3m6!1s0x9288f9086517a9d9:0xaeb5f050eebe2cbc!8m2!3d-2.4334585!4d-54.7289863!15sCllQYXLDs3F1aWEgU8OjbyBGcmFuY2lzY28gZGUgQXNzaXMsIEF2LiBQbMOhY2lkbyBkZSBDYXN0cm8sIDU4NCwgQ2FyYW5hemFsLCBTYW50YXLDqW0gLSBQQVpUIlJwYXLDs3F1aWEgc8OjbyBmcmFuY2lzY28gZGUgYXNzaXMgYXYgcGzDoWNpZG8gZGUgY2FzdHJvIDU4NCBjYXJhbmF6YWwgc2FudGFyw6ltIHBhkgEPY2F0aG9saWNfY2h1cmNomgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4V2RFMVdiRWxoUjJ4Q1VWUnNURTF0VGpGaU0xWnNUakJWZUZOSFl4QULgAQD6AQQIABAz!16s%2Fg%2F11c0xz5y9_?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
     },
     recepcao: {
       horario: "12:00h",
