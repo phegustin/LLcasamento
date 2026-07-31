@@ -1,29 +1,30 @@
 /* ============================================
-   PALETA DE CORES (PLACEHOLDER)
-   ============================================
-   Substitua estas variáveis pelas cores da sua paleta
-   quando fornecer o monograma e paleta definitivos.
-*/
+   IDENTIDADE VISUAL — LUÍS FELIPE & LETÍCIA
+   A paleta da papelaria combina cores luminosas em
+   uma base clara, para preservar leveza e sofisticação.
+   ============================================ */
 :root {
-  /* Paleta principal */
-  --cor-primaria: #6b8e6f;        /* Verde sálvia */
-  --cor-primaria-escura: #2d3a2e; /* Verde escuro */
-  --cor-primaria-clara: #a8c0ab;  /* Verde claro */
-  
-  /* Cor de destaque */
-  --cor-destaque: #c9a961;        /* Dourado suave */
-  --cor-destaque-clara: #e8d9a8;  /* Dourado claro */
-  
-  /* Cores neutras */
-  --cor-fundo: #faf7f2;           /* Bege claro */
-  --cor-fundo-alt: #f2ede3;       /* Bege alternativo */
-  --cor-texto: #3a3a3a;           /* Cinza escuro */
-  --cor-texto-suave: #6b6b6b;     /* Cinza médio */
+  /* Cores principais da paleta */
+  --cor-primaria: #f20866;        /* Pink */
+  --cor-primaria-escura: #17110e; /* Preto suave */
+  --cor-primaria-clara: #e887d4;  /* Rosa-lilás */
+
+  /* Cores de acento */
+  --cor-destaque: #ff5003;        /* Laranja vivo */
+  --cor-destaque-clara: #e7e445;  /* Amarelo-limão */
+  --cor-bege-dourado: #e1bf85;    /* Bege dourado */
+
+  /* Base neutra */
+  --cor-fundo: #fffaf3;           /* Marfim quente */
+  --cor-fundo-alt: #fff1d9;       /* Creme claro */
+  --cor-texto: #211713;           /* Marrom quase preto */
+  --cor-texto-suave: #6b4941;     /* Marrom suave */
   --cor-branco: #ffffff;
   
   /* Tipografia */
-  --fonte-titulo: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --fonte-corpo: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fonte-titulo: 'Playfair Display', Georgia, serif;
+  --fonte-corpo: 'Playfair Display', Georgia, serif;
+  --fonte-caligrafica: 'Pinyon Script', cursive;
   
   /* Espaçamentos */
   --espacamento-xs: 0.5rem;
@@ -155,7 +156,7 @@ h3 {
 }
 
 .header-logo {
-  font-family: var(--fonte-titulo);
+  font-family: var(--fonte-caligrafica);
   font-size: 1.5rem;
   color: var(--cor-primaria-escura);
   font-style: italic;
@@ -207,11 +208,10 @@ h3 {
   align-items: center;
   text-align: center;
   padding: var(--espacamento-xl) var(--espacamento-md);
-  background: linear-gradient(
-    180deg,
-    var(--cor-fundo) 0%,
-    var(--cor-fundo-alt) 100%
-  );
+  background:
+    radial-gradient(circle at 12% 18%, rgba(232, 135, 212, 0.42) 0 8%, transparent 26%),
+    radial-gradient(circle at 88% 78%, rgba(231, 228, 69, 0.45) 0 9%, transparent 28%),
+    linear-gradient(135deg, var(--cor-fundo) 0%, #fff4df 100%);
   position: relative;
   overflow: hidden;
 }
@@ -223,8 +223,8 @@ h3 {
   right: -20%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, var(--cor-primaria-clara) 0%, transparent 70%);
-  opacity: 0.3;
+  background: radial-gradient(circle, var(--cor-destaque) 0%, transparent 70%);
+  opacity: 0.16;
   border-radius: 50%;
 }
 
@@ -235,8 +235,8 @@ h3 {
   left: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, var(--cor-destaque-clara) 0%, transparent 70%);
-  opacity: 0.4;
+  background: radial-gradient(circle, var(--cor-primaria-clara) 0%, transparent 70%);
+  opacity: 0.3;
   border-radius: 50%;
 }
 
@@ -247,7 +247,7 @@ h3 {
 }
 
 .monograma {
-  font-family: var(--fonte-titulo);
+  font-family: var(--fonte-caligrafica);
   font-size: clamp(3rem, 8vw, 5rem);
   color: var(--cor-primaria-escura);
   font-weight: 300;
@@ -740,7 +740,7 @@ h3 {
 }
 
 .footer-monograma {
-  font-family: var(--fonte-titulo);
+  font-family: var(--fonte-caligrafica);
   font-size: 2rem;
   font-style: italic;
   margin-bottom: var(--espacamento-sm);
