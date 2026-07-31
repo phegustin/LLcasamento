@@ -44,6 +44,7 @@
       <nav class="header-nav" id="header-nav">
         <a href="#hero">Início</a>
         <a href="#sobre">Nossa História</a>
+        <a href="#rsvp" id="nav-rsvp" hidden>Confirmar presença</a>
         <a href="#presentes">Presentes</a>
       </nav>
     </div>
@@ -87,6 +88,53 @@
       <p class="historia-casal" id="historia-casal">
         Nossa história começou de forma inesperada...
       </p>
+    </div>
+  </section>
+
+  <!-- ============================
+       CONFIRMAÇÃO DE PRESENÇA (RSVP)
+       Ativada após configuração do Formspree.
+       ============================ -->
+  <section class="rsvp-section" id="rsvp" hidden>
+    <div class="rsvp-container animate-on-scroll">
+      <p class="section-kicker">03 · 10 · 2026</p>
+      <h2>Confirme sua presença</h2>
+      <p class="section-subtitle">Vai ser uma alegria celebrar este dia com você.</p>
+
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-nome">Nome completo</label>
+          <input id="rsvp-nome" name="nome" type="text" autocomplete="name" required />
+        </div>
+        <div class="rsvp-field">
+          <label for="rsvp-presenca">Você poderá comparecer?</label>
+          <select id="rsvp-presenca" name="presenca" required>
+            <option value="">Selecione uma opção</option>
+            <option value="Sim, estarei presente!">Sim, estarei presente! 💛</option>
+            <option value="Não poderei comparecer">Infelizmente não poderei comparecer</option>
+          </select>
+        </div>
+        <div class="rsvp-field">
+          <label for="rsvp-quantidade">Quantas pessoas irão?</label>
+          <select id="rsvp-quantidade" name="quantidade" required>
+            <option value="">Selecione</option>
+            <option value="1">1 pessoa</option>
+            <option value="2">2 pessoas</option>
+            <option value="3">3 pessoas</option>
+            <option value="4">4 pessoas</option>
+          </select>
+        </div>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-acompanhante">Nome do acompanhante <span>(se houver)</span></label>
+          <input id="rsvp-acompanhante" name="acompanhante" type="text" />
+        </div>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-observacoes">Restrições alimentares ou recado <span>(opcional)</span></label>
+          <textarea id="rsvp-observacoes" name="observacoes" rows="3"></textarea>
+        </div>
+        <button class="btn-rsvp" type="submit">Confirmar presença</button>
+        <p class="rsvp-status" id="rsvp-status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 

@@ -17,6 +17,13 @@ const CONFIG = {
     mensagemConfirmacao: "Olá! Acabei de fazer meu presente para vocês. Aguardo confirmação! 😊",
   },
 
+  // RSVP: ao criar o formulário no Formspree, preencha o endpoint e altere ativa para true.
+  rsvp: {
+    ativa: true,
+    endpoint: "https://formspree.io/f/mdaqrnzk",
+    mensagemSucesso: "Presença registrada! Estamos muito felizes por celebrar esse dia com você.",
+  },
+
   pix: {
     chave: "email@exemplo.com",
     titular: "Nome do Titular",

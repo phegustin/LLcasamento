@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   configurarModal();
   configurarFiltros();
   configurarScrollSuave();
+  configurarRSVP();
   configurarAnimações();
 });
 
@@ -198,6 +199,54 @@ function fecharModal() {
     modal.classList.remove("active");
     document.body.style.overflow = "";
   }
+}
+
+// ---- Confirmação de presença (Formspree) ----
+
+function configurarRSVP() {
+  const { rsvp } = CONFIG;
+  const section = document.getElementById("rsvp");
+  const nav = document.getElementById("nav-rsvp");
+  const form = document.getElementById("rsvp-form");
+  const status = document.getElementById("rsvp-status");
+
+  if (!rsvp || !rsvp.ativa || !rsvp.endpoint || !section || !form) return;
+
+  section.hidden = false;
+  if (nav) nav.hidden = false;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    button.textContent = "Enviando confirmação...";
+    status.className = "rsvp-status";
+    status.textContent = "";
+
+    try {
+      const resposta = await fetch(rsvp.endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!resposta.ok) throw new Error("Não foi possível enviar a confirmação.");
+
+      form.reset();
+      status.className = "rsvp-status success";
+      status.textContent = rsvp.mensagemSucesso;
+    } catch (erro) {
+      status.className = "rsvp-status error";
+      status.textContent = "Não foi possível registrar sua presença agora. Tente novamente em alguns instantes.";
+    } finally {
+      button.disabled = false;
+      button.textContent = "Confirmar presença";
+    }
+  });
 }
 
 // ---- Scroll Suave ----
