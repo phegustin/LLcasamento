@@ -102,7 +102,7 @@ const CONFIG = {
       titulo: "Uma Noite Especial na Lua de Mel",
       descricao: "Para uma experiência a dois que vai ficar guardada para sempre.",
       valor: 650.00,
-      imagem: "assets/gifts/jantar-romantico.jpg",
+      imagem: "assets/gifts/noite-especial-lua-de-mel.jpg",
       categoria: "lua-de-mel",
     },
     {
@@ -118,7 +118,7 @@ const CONFIG = {
       titulo: "Nosso Cantinho de Leitura",
       descricao: "Uma ajuda para deixar a sala ainda mais gostosa para ler e sonhar.",
       valor: 220.00,
-      imagem: "assets/gifts/sofa-domingo.jpg",
+      imagem: "assets/gifts/cantinho-de-leitura.jpg",
       categoria: "sala",
     },
     {
@@ -126,7 +126,7 @@ const CONFIG = {
       titulo: "Toalhas Fofinhas para o Nosso Banho",
       descricao: "Pequenos confortos que fazem toda a diferença na rotina.",
       valor: 200.00,
-      imagem: "assets/gifts/roupa-de-cama.jpg",
+      imagem: "assets/gifts/toalhas.jpg",
       categoria: "quarto",
     },
     {
@@ -134,7 +134,7 @@ const CONFIG = {
       titulo: "Café para Receber Visitas",
       descricao: "Para que sempre tenha café passado e conversa boa na nossa casa.",
       valor: 130.00,
-      imagem: "assets/gifts/cafe-na-cama.jpg",
+      imagem: "assets/gifts/cafe-visitas.jpg",
       categoria: "casa",
     },
     {
@@ -142,7 +142,7 @@ const CONFIG = {
       titulo: "Fundo do “Não Deixa a Louça Acumular”",
       descricao: "Uma contribuição bem-humorada para a nossa paz doméstica e uma cozinha organizada.",
       valor: 75.00,
-      imagem: "assets/gifts/cozinhar-juntos.jpg",
+      imagem: "assets/gifts/louca.jpg",
       categoria: "cozinha",
     },
   ],
