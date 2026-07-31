@@ -360,6 +360,52 @@ h3 {
 }
 
 /* ============================================
+   LOCAL E HORÁRIOS
+   ============================================ */
+.evento-section {
+  padding: var(--espacamento-xl) var(--espacamento-md);
+  background: var(--cor-fundo-alt);
+}
+
+.evento-container { max-width: 780px; margin: 0 auto; text-align: center; }
+.evento-timeline { display: grid; gap: 1rem; margin-top: var(--espacamento-md); text-align: left; }
+.evento-card {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--cor-branco);
+  border-radius: var(--raio-borda-lg);
+  box-shadow: var(--sombra-sm);
+}
+.evento-horario {
+  align-self: start;
+  padding: 0.55rem 0.7rem;
+  border-radius: 50px;
+  background: var(--cor-destaque-clara);
+  color: var(--cor-primaria-escura);
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+.evento-tipo { margin-bottom: 0.25rem; color: var(--cor-destaque); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.evento-conteudo h3 { margin-bottom: 0.45rem; font-size: 1.45rem; }
+.evento-conteudo > p:not(.evento-tipo) { margin-bottom: 1rem; color: var(--cor-texto-suave); }
+.btn-rota {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--cor-primaria);
+  border-radius: 50px;
+  color: var(--cor-primaria);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.btn-rota:hover { background: var(--cor-primaria); color: var(--cor-branco); }
+
+/* ============================================
    CONFIRMAÇÃO DE PRESENÇA
    ============================================ */
 .rsvp-section {
@@ -846,6 +892,8 @@ h3 {
    ============================================ */
 
 @media (max-width: 768px) {
+  .evento-card { grid-template-columns: 1fr; gap: 0.8rem; }
+  .evento-horario { justify-self: start; }
   .rsvp-form { grid-template-columns: 1fr; }
   .rsvp-field, .rsvp-field-full, .rsvp-status, .btn-rsvp { grid-column: 1; }
 

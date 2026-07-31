@@ -7,6 +7,7 @@ const VERSAO_ASSETS = "20260731-2";
 
 document.addEventListener("DOMContentLoaded", () => {
   renderizarCabecalho();
+  renderizarEvento();
   renderizarPresentes();
   configurarModal();
   configurarFiltros();
@@ -38,6 +39,27 @@ function renderizarCabecalho() {
   if (historiaEl) historiaEl.textContent = casal.historiaCasal;
 
   document.title = `${casal.noivo} & ${casal.noiva} | Lista de Presentes`;
+}
+
+// ---- Local e horários ----
+
+function renderizarEvento() {
+  if (!CONFIG.evento) return;
+
+  ["celebracao", "recepcao"].forEach((tipo) => {
+    const evento = CONFIG.evento[tipo];
+    if (!evento) return;
+
+    const horario = document.getElementById(`${tipo}-horario`);
+    const local = document.getElementById(`${tipo}-local`);
+    const endereco = document.getElementById(`${tipo}-endereco`);
+    const mapa = document.getElementById(`${tipo}-mapa`);
+
+    if (horario) horario.textContent = evento.horario;
+    if (local) local.textContent = evento.local;
+    if (endereco) endereco.textContent = evento.endereco;
+    if (mapa) mapa.href = evento.mapa;
+  });
 }
 
 // ---- Renderização dos Presentes ----
