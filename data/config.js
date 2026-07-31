@@ -7,7 +7,7 @@ const CONFIG = {
     noivo: "Luís Felipe",
     noiva: "Letícia",
     monograma: "L & L",
-    dataCasamento: "31 de Dezembro de 2026",
+    dataCasamento: "03 de outubro de 2026",
     mensagemBoasVindas: "Sejam bem-vindos à nossa lista de presentes! Estamos muito felizes em compartilhar este momento especial com vocês. Cada presente é um carinho que nos ajudará a construir nosso lar juntos.",
     historiaCasal: "Nossa história começou de forma inesperada e se transformou no amor mais bonito que já conhecemos. Agora estamos prontos para dar o próximo passo e queremos vocês conosco nessa jornada!",
   },
