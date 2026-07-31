@@ -33,7 +33,9 @@
        ============================ -->
   <header class="site-header">
     <div class="header-content">
-      <a href="#hero" class="header-logo" id="header-logo">N & N</a>
+      <a href="#hero" class="header-logo" id="header-logo" aria-label="Luís Felipe e Letícia">
+        <img src="assets/images/Ativo 5.png" alt="Monograma de Luís Felipe e Letícia" />
+      </a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
         ☰
@@ -52,7 +54,9 @@
        ============================ -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <div class="monograma" id="monograma">N & N</div>
+      <div class="monograma" id="monograma">
+        <img src="assets/images/Ativo 5.png" alt="Monograma de Luís Felipe e Letícia" />
+      </div>
 
       <h1 class="nomes-casal" id="nomes-casal">Noivo & Noiva</h1>
 
@@ -187,7 +191,9 @@
        FOOTER
        ============================ -->
   <footer class="site-footer">
-    <div class="footer-monograma" id="footer-monograma">N & N</div>
+    <div class="footer-monograma" id="footer-monograma">
+      <img src="assets/images/Ativo 5.png" alt="Monograma de Luís Felipe e Letícia" />
+    </div>
     <p class="footer-text">
       Feito com <span class="footer-heart">♥</span> para celebrar nosso amor
     </p>
@@ -228,10 +234,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       const footerMono = document.getElementById('footer-monograma');
       const headerLogo = document.getElementById('header-logo');
-      if (footerMono && CONFIG.casal.monograma) {
+      if (footerMono && CONFIG.casal.monograma && !footerMono.querySelector('img')) {
         footerMono.textContent = CONFIG.casal.monograma;
       }
-      if (headerLogo && CONFIG.casal.monograma) {
+      if (headerLogo && CONFIG.casal.monograma && !headerLogo.querySelector('img')) {
         headerLogo.textContent = CONFIG.casal.monograma;
       }
     });

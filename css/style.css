@@ -156,10 +156,16 @@ h3 {
 }
 
 .header-logo {
-  font-family: var(--fonte-caligrafica);
-  font-size: 1.5rem;
-  color: var(--cor-primaria-escura);
-  font-style: italic;
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .header-nav {
@@ -247,33 +253,21 @@ h3 {
 }
 
 .monograma {
-  font-family: var(--fonte-caligrafica);
-  font-size: clamp(3rem, 8vw, 5rem);
-  color: var(--cor-primaria-escura);
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--espacamento-sm);
-  font-style: italic;
+  width: clamp(10rem, 25vw, 15rem);
+  margin: 0 auto var(--espacamento-sm);
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
+.monograma img {
+  width: 100%;
+  height: auto;
+}
+
+/* A arte do monograma é o elemento central do hero. */
 .monograma::before,
 .monograma::after {
-  content: '✦';
-  font-size: 0.3em;
-  color: var(--cor-destaque);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.monograma::before {
-  left: -2rem;
-}
-
-.monograma::after {
-  right: -2rem;
+  display: none;
 }
 
 .nomes-casal {
@@ -740,11 +734,14 @@ h3 {
 }
 
 .footer-monograma {
-  font-family: var(--fonte-caligrafica);
-  font-size: 2rem;
-  font-style: italic;
-  margin-bottom: var(--espacamento-sm);
-  color: var(--cor-destaque-clara);
+  width: 5.5rem;
+  margin: 0 auto var(--espacamento-sm);
+}
+
+.footer-monograma img {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
 }
 
 .footer-text {

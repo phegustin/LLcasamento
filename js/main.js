@@ -17,7 +17,9 @@ function renderizarCabecalho() {
   const { casal } = CONFIG;
 
   const monogramaEl = document.getElementById("monograma");
-  if (monogramaEl) monogramaEl.textContent = casal.monograma;
+  if (monogramaEl && !monogramaEl.querySelector("img")) {
+    monogramaEl.textContent = casal.monograma;
+  }
 
   const nomesEl = document.getElementById("nomes-casal");
   if (nomesEl) nomesEl.textContent = `${casal.noivo} & ${casal.noiva}`;
