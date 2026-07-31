@@ -2,6 +2,9 @@
 // SCRIPT PRINCIPAL DO SITE
 // ============================================
 
+// Atualize este valor a cada publicação de imagens para ignorar caches antigos.
+const VERSAO_ASSETS = "20260731-2";
+
 document.addEventListener("DOMContentLoaded", () => {
   renderizarCabecalho();
   renderizarPresentes();
@@ -56,7 +59,7 @@ function renderizarPresentes(filtro = "todos") {
     card.innerHTML = `
       <div class="gift-image-wrapper">
         <img 
-          src="${presente.imagem}" 
+          src="${presente.imagem}?v=${VERSAO_ASSETS}"
           alt="${presente.titulo}"
           onerror="this.src='assets/images/placeholder-gift.svg'"
           loading="lazy"
