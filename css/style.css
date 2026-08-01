@@ -213,9 +213,8 @@ h3 {
 
 .hero {
   min-height: max(680px, 100vh);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: var(--cor-fundo);
+  display: block;
+  background: #f7a9b8;
   position: relative;
   overflow: hidden;
 }
@@ -224,16 +223,19 @@ h3 {
 .hero::after { display: none; }
 
 .hero-copy {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: min(62%, 800px);
   min-height: inherit;
   padding: clamp(7rem, 10vw, 10rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 7vw, 6rem);
-  background: linear-gradient(145deg, #ffb39d 0%, #f7a9b8 100%);
   text-align: center;
 }
 
-.hero-photo { min-height: inherit; margin: 0; overflow: hidden; }
+.hero-photo { position: absolute; inset: 0; z-index: 0; margin: 0; overflow: hidden; }
+.hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 179, 157, 0.98) 0%, rgba(247, 169, 184, 0.88) 42%, rgba(247, 169, 184, 0.35) 64%, rgba(247, 169, 184, 0.02) 82%); }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .hero-content {
@@ -945,16 +947,44 @@ h3 {
   }
 
   .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
+    display: block;
+    min-height: 100svh;
+    background: #f7a9b8;
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    z-index: 0;
+  }
+
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(247, 169, 184, 0.98) 0%, rgba(247, 169, 184, 0.8) 38%, rgba(25, 17, 14, 0.05) 100%);
   }
 
   .hero-copy {
-    min-height: 0;
-    padding: 7.5rem 1.5rem 3.5rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    align-items: flex-end;
+    min-height: 100svh;
+    padding: 5.5rem 1.5rem 2.5rem;
+    background: transparent;
   }
 
-  .hero-photo { min-height: 32rem; }
+  .hero-content { width: 100%; }
+  .hero-copy .monograma { width: clamp(5.25rem, 20vw, 7rem); margin-bottom: 0.65rem; }
+  .hero-copy .monograma img { filter: invert(1); }
+  .hero-copy .nomes-casal { color: var(--cor-branco); font-size: clamp(1.9rem, 8vw, 2.6rem); text-shadow: 0 1px 12px rgba(33, 23, 19, 0.18); }
+  .hero-copy .data-casamento { margin-bottom: 1rem; color: var(--cor-branco); font-size: 0.72rem; letter-spacing: 0.12em; }
+  .hero-copy .mensagem-boas-vindas { margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.94); font-size: 0.82rem; line-height: 1.55; }
+  .hero-copy .btn-hero { padding: 0.75rem 1.2rem; background: var(--cor-branco); color: var(--cor-primaria); font-size: 0.78rem; }
+  .hero-copy .btn-hero:hover { background: var(--cor-destaque-clara); color: var(--cor-primaria-escura); }
+  .btn-hero svg { width: 15px; height: 15px; }
 
   .monograma::before,
   .monograma::after {
