@@ -168,17 +168,28 @@ function abrirModalPIX(presente) {
   document.getElementById("modal-titular").textContent = pix.titular;
   document.getElementById("codigo-pix-texto").textContent = codigoPIX;
 
+  // Configura o WhatsApp antes de recursos externos, para o botão nunca ficar sem link.
+  const btnWhatsapp = document.getElementById("btn-confirmar-whatsapp");
+  if (btnWhatsapp) {
+    const mensagem = encodeURIComponent(
+      `${CONFIG.contato.mensagemConfirmacao}\n\n🎁 Presente: ${presente.titulo}\n💰 Valor: ${formatarMoeda(presente.valor)}`
+    );
+    btnWhatsapp.href = `https://api.whatsapp.com/send?phone=${CONFIG.contato.whatsapp}&text=${mensagem}`;
+  }
+
   // Gerar QR Code
   const qrContainer = document.getElementById("qrcode");
   qrContainer.innerHTML = "";
-  new QRCode(qrContainer, {
-    text: codigoPIX,
-    width: 220,
-    height: 220,
-    colorDark: "#2d3a2e",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.M,
-  });
+  if (typeof QRCode !== "undefined") {
+    new QRCode(qrContainer, {
+      text: codigoPIX,
+      width: 220,
+      height: 220,
+      colorDark: "#2d3a2e",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M,
+    });
+  }
 
   // Botão copiar
   const btnCopiar = document.getElementById("btn-copiar-pix");
@@ -197,15 +208,6 @@ function abrirModalPIX(presente) {
       }, 2500);
     }
   };
-
-  // Botão WhatsApp
-  const btnWhatsapp = document.getElementById("btn-confirmar-whatsapp");
-  if (btnWhatsapp) {
-    const mensagem = encodeURIComponent(
-      `${CONFIG.contato.mensagemConfirmacao}\n\n🎁 Presente: ${presente.titulo}\n💰 Valor: ${formatarMoeda(presente.valor)}`
-    );
-    btnWhatsapp.href = `https://wa.me/${CONFIG.contato.whatsapp}?text=${mensagem}`;
-  }
 
   // Mostrar modal
   modal.classList.add("active");
