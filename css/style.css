@@ -212,44 +212,29 @@ h3 {
    ============================================ */
 
 .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: var(--espacamento-xl) var(--espacamento-md);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(232, 135, 212, 0.42) 0 8%, transparent 26%),
-    radial-gradient(circle at 88% 78%, rgba(231, 228, 69, 0.45) 0 9%, transparent 28%),
-    linear-gradient(135deg, var(--cor-fundo) 0%, #fff4df 100%);
+  min-height: max(680px, 100vh);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: var(--cor-fundo);
   position: relative;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--cor-destaque) 0%, transparent 70%);
-  opacity: 0.16;
-  border-radius: 50%;
+.hero::before,
+.hero::after { display: none; }
+
+.hero-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+  padding: clamp(7rem, 10vw, 10rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 7vw, 6rem);
+  background: linear-gradient(145deg, #ffb39d 0%, #f7a9b8 100%);
+  text-align: center;
 }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--cor-primaria-clara) 0%, transparent 70%);
-  opacity: 0.3;
-  border-radius: 50%;
-}
+.hero-photo { min-height: inherit; margin: 0; overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .hero-content {
   position: relative;
@@ -960,8 +945,16 @@ h3 {
   }
 
   .hero {
-    padding: 8rem var(--espacamento-sm) var(--espacamento-lg);
+    min-height: auto;
+    grid-template-columns: 1fr;
   }
+
+  .hero-copy {
+    min-height: 0;
+    padding: 7.5rem 1.5rem 3.5rem;
+  }
+
+  .hero-photo { min-height: 32rem; }
 
   .monograma::before,
   .monograma::after {
