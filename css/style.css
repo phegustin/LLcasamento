@@ -879,6 +879,7 @@ h3 {
 .recado-texto p:last-child { margin-bottom: 0; }
 .recado-assinatura { margin-top: var(--espacamento-md); color: var(--cor-primaria-escura); font-family: var(--fonte-caligrafica); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; }
 .recado-assinatura span { font-family: var(--fonte-titulo); font-size: 0.42em; font-style: italic; }
+.recado-assinatura b { display: inline-block; margin: 0 0.08em; font-family: var(--fonte-titulo); font-size: 0.75em; font-style: italic; font-weight: 400; vertical-align: 0.08em; }
 
 /* ============================================
    FOOTER
