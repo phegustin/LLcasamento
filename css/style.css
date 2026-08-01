@@ -236,7 +236,7 @@ h3 {
 
 .hero-photo { position: absolute; inset: 0; z-index: 0; margin: 0; overflow: hidden; }
 .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 179, 157, 0.98) 0%, rgba(247, 169, 184, 0.88) 42%, rgba(247, 169, 184, 0.35) 64%, rgba(247, 169, 184, 0.02) 82%); }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
 
 .hero-content {
   position: relative;
@@ -965,6 +965,8 @@ h3 {
     inset: 0;
     background: linear-gradient(0deg, rgba(247, 169, 184, 0.98) 0%, rgba(247, 169, 184, 0.8) 38%, rgba(25, 17, 14, 0.05) 100%);
   }
+
+  .hero-photo img { object-position: center; }
 
   .hero-copy {
     position: relative;
