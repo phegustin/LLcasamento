@@ -27,7 +27,7 @@ function renderizarCabecalho() {
   }
 
   const nomesEl = document.getElementById("nomes-casal");
-  if (nomesEl) nomesEl.textContent = `${casal.noivo} & ${casal.noiva}`;
+  if (nomesEl) nomesEl.textContent = `${casal.noiva} & ${casal.noivo}`;
 
   const dataEl = document.getElementById("data-casamento");
   if (dataEl) dataEl.textContent = casal.dataCasamento;
@@ -35,7 +35,7 @@ function renderizarCabecalho() {
   const msgEl = document.getElementById("mensagem-boas-vindas");
   if (msgEl) msgEl.textContent = casal.mensagemBoasVindas;
 
-  document.title = `${casal.noivo} & ${casal.noiva} | Lista de Presentes`;
+  document.title = `${casal.noiva} & ${casal.noivo} | Lista de Presentes`;
 }
 
 // ---- Local e horários ----
