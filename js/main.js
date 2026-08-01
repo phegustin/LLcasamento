@@ -174,7 +174,12 @@ function abrirModalPIX(presente) {
     const mensagem = encodeURIComponent(
       `${CONFIG.contato.mensagemConfirmacao}\n\n🎁 Presente: ${presente.titulo}\n💰 Valor: ${formatarMoeda(presente.valor)}`
     );
-    btnWhatsapp.href = `https://api.whatsapp.com/send?phone=${CONFIG.contato.whatsapp}&text=${mensagem}`;
+    const destinoWhatsapp = `https://api.whatsapp.com/send?phone=${CONFIG.contato.whatsapp}&text=${mensagem}`;
+    btnWhatsapp.href = destinoWhatsapp;
+    btnWhatsapp.onclick = (event) => {
+      event.preventDefault();
+      window.location.assign(destinoWhatsapp);
+    };
   }
 
   // Gerar QR Code
