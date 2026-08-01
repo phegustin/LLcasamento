@@ -867,6 +867,20 @@ h3 {
 }
 
 /* ============================================
+   RECADO AOS CONVIDADOS
+   ============================================ */
+.recado-section {
+  padding: var(--espacamento-xl) var(--espacamento-md);
+  background: linear-gradient(135deg, rgba(232, 135, 212, 0.18), rgba(231, 228, 69, 0.25));
+}
+.recado-container { max-width: 760px; margin: 0 auto; text-align: center; }
+.recado-texto { margin: var(--espacamento-md) auto; }
+.recado-texto p { margin-bottom: 1.15rem; color: var(--cor-texto); font-family: var(--fonte-titulo); font-size: clamp(1.08rem, 2vw, 1.28rem); line-height: 1.8; }
+.recado-texto p:last-child { margin-bottom: 0; }
+.recado-assinatura { margin-top: var(--espacamento-md); color: var(--cor-primaria-escura); font-family: var(--fonte-caligrafica); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; }
+.recado-assinatura span { font-family: var(--fonte-titulo); font-size: 0.42em; font-style: italic; }
+
+/* ============================================
    FOOTER
    ============================================ */
 
