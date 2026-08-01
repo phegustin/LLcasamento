@@ -35,9 +35,6 @@ function renderizarCabecalho() {
   const msgEl = document.getElementById("mensagem-boas-vindas");
   if (msgEl) msgEl.textContent = casal.mensagemBoasVindas;
 
-  const historiaEl = document.getElementById("historia-casal");
-  if (historiaEl) historiaEl.textContent = casal.historiaCasal;
-
   document.title = `${casal.noivo} & ${casal.noiva} | Lista de Presentes`;
 }
 
