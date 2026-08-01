@@ -43,9 +43,9 @@
 
       <nav class="header-nav" id="header-nav">
         <a href="#hero">Início</a>
-        <a href="#rsvp" id="nav-rsvp" hidden>Confirmar presença</a>
         <a href="#nosso-dia">Local e horários</a>
         <a href="#dress-code">Dress code</a>
+        <a href="#rsvp" id="nav-rsvp" hidden>Confirmar presença</a>
         <a href="#presentes">Presentes</a>
       </nav>
     </div>
@@ -74,53 +74,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
         Ver lista de presentes
       </a>
-    </div>
-  </section>
-
-  <!-- ============================
-       CONFIRMAÇÃO DE PRESENÇA (RSVP)
-       Ativada após configuração do Formspree.
-       ============================ -->
-  <section class="rsvp-section" id="rsvp" hidden>
-    <div class="rsvp-container animate-on-scroll">
-      <p class="section-kicker">03 · 10 · 2026</p>
-      <h2>Confirme sua presença</h2>
-      <p class="section-subtitle">Vai ser uma alegria celebrar este dia com você.</p>
-
-      <form class="rsvp-form" id="rsvp-form" novalidate>
-        <div class="rsvp-field rsvp-field-full">
-          <label for="rsvp-nome">Nome completo</label>
-          <input id="rsvp-nome" name="nome" type="text" autocomplete="name" required />
-        </div>
-        <div class="rsvp-field">
-          <label for="rsvp-presenca">Você poderá comparecer?</label>
-          <select id="rsvp-presenca" name="presenca" required>
-            <option value="">Selecione uma opção</option>
-            <option value="Sim, estarei presente!">Sim, estarei presente! 💛</option>
-            <option value="Não poderei comparecer">Infelizmente não poderei comparecer</option>
-          </select>
-        </div>
-        <div class="rsvp-field">
-          <label for="rsvp-quantidade">Quantas pessoas irão?</label>
-          <select id="rsvp-quantidade" name="quantidade" required>
-            <option value="">Selecione</option>
-            <option value="1">1 pessoa</option>
-            <option value="2">2 pessoas</option>
-            <option value="3">3 pessoas</option>
-            <option value="4">4 pessoas</option>
-          </select>
-        </div>
-        <div class="rsvp-field rsvp-field-full">
-          <label for="rsvp-acompanhante">Nome do acompanhante <span>(se houver)</span></label>
-          <input id="rsvp-acompanhante" name="acompanhante" type="text" />
-        </div>
-        <div class="rsvp-field rsvp-field-full">
-          <label for="rsvp-observacoes">Restrições alimentares ou recado <span>(opcional)</span></label>
-          <textarea id="rsvp-observacoes" name="observacoes" rows="3"></textarea>
-        </div>
-        <button class="btn-rsvp" type="submit">Confirmar presença</button>
-        <p class="rsvp-status" id="rsvp-status" aria-live="polite"></p>
-      </form>
     </div>
   </section>
 
@@ -203,6 +156,53 @@
       </div>
 
       <p class="dress-final">O que realmente fará este dia inesquecível será a presença de cada um de vocês. Esperamos vocês com muito carinho!</p>
+    </div>
+  </section>
+
+  <!-- ============================
+       CONFIRMAÇÃO DE PRESENÇA (RSVP)
+       Ativada após configuração do Formspree.
+       ============================ -->
+  <section class="rsvp-section" id="rsvp" hidden>
+    <div class="rsvp-container animate-on-scroll">
+      <p class="section-kicker">03 · 10 · 2026</p>
+      <h2>Confirme sua presença</h2>
+      <p class="section-subtitle">Vai ser uma alegria celebrar este dia com você.</p>
+
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-nome">Nome completo</label>
+          <input id="rsvp-nome" name="nome" type="text" autocomplete="name" required />
+        </div>
+        <div class="rsvp-field">
+          <label for="rsvp-presenca">Você poderá comparecer?</label>
+          <select id="rsvp-presenca" name="presenca" required>
+            <option value="">Selecione uma opção</option>
+            <option value="Sim, estarei presente!">Sim, estarei presente! 💛</option>
+            <option value="Não poderei comparecer">Infelizmente não poderei comparecer</option>
+          </select>
+        </div>
+        <div class="rsvp-field">
+          <label for="rsvp-quantidade">Quantas pessoas irão?</label>
+          <select id="rsvp-quantidade" name="quantidade" required>
+            <option value="">Selecione</option>
+            <option value="1">1 pessoa</option>
+            <option value="2">2 pessoas</option>
+            <option value="3">3 pessoas</option>
+            <option value="4">4 pessoas</option>
+          </select>
+        </div>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-acompanhante">Nome do acompanhante <span>(se houver)</span></label>
+          <input id="rsvp-acompanhante" name="acompanhante" type="text" />
+        </div>
+        <div class="rsvp-field rsvp-field-full">
+          <label for="rsvp-observacoes">Restrições alimentares ou recado <span>(opcional)</span></label>
+          <textarea id="rsvp-observacoes" name="observacoes" rows="3"></textarea>
+        </div>
+        <button class="btn-rsvp" type="submit">Confirmar presença</button>
+        <p class="rsvp-status" id="rsvp-status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
