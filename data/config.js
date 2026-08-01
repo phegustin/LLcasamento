@@ -12,7 +12,7 @@ const CONFIG = {
   },
 
   contato: {
-    whatsapp: "5511999999999", // Formato: 55 + DDD + número
+    whatsapp: "5593992456887", // Formato: 55 + DDD + número
     mensagemConfirmacao: "Olá! Acabei de fazer meu presente para vocês. Aguardo confirmação! 😊",
   },
 
