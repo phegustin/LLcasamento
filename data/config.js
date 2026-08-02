@@ -39,9 +39,9 @@ const CONFIG = {
   },
 
   pix: {
-    chave: "email@exemplo.com",
-    titular: "Nome do Titular",
-    cidade: "SAO PAULO",
+    chave: "leticiap0212@gmail.com",
+    titular: "Letícia Pereira dos Santos",
+    cidade: "SANTAREM PARA",
   },
 
   // Valores e textos podem ser ajustados livremente antes do casamento.
