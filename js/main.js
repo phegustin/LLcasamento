@@ -228,7 +228,21 @@ function fecharModal() {
   }
 }
 
-// ---- Confirmação de presença (Formspree) ----
+// ---- Formulários salvos na planilha (Google Apps Script) ----
+
+function enviarParaPlanilha(dados) {
+  const endpoint = CONFIG.formularios && CONFIG.formularios.endpoint;
+  if (!endpoint) throw new Error("Endpoint da planilha não configurado.");
+
+  // "no-cors" permite o envio ao Apps Script a partir do GitHub Pages.
+  // A confirmação visual é exibida após o navegador concluir o despacho.
+  return fetch(endpoint, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(dados),
+  });
+}
 
 function configurarRSVP() {
   const { rsvp } = CONFIG;
@@ -237,7 +251,7 @@ function configurarRSVP() {
   const form = document.getElementById("rsvp-form");
   const status = document.getElementById("rsvp-status");
 
-  if (!rsvp || !rsvp.ativa || !rsvp.endpoint || !section || !form) return;
+  if (!rsvp || !rsvp.ativa || !CONFIG.formularios?.endpoint || !section || !form) return;
 
   section.hidden = false;
   if (nav) nav.hidden = false;
@@ -250,19 +264,21 @@ function configurarRSVP() {
     }
 
     const button = form.querySelector("button[type='submit']");
+    const campos = Object.fromEntries(new FormData(form).entries());
     button.disabled = true;
     button.textContent = "Enviando confirmação...";
     status.className = "rsvp-status";
     status.textContent = "";
 
     try {
-      const resposta = await fetch(rsvp.endpoint, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+      await enviarParaPlanilha({
+        tipo: "rsvp",
+        nome: campos.nome,
+        presenca: campos.presenca,
+        quantidade: campos.quantidade,
+        acompanhante: campos.acompanhante,
+        observacoes: campos.observacoes,
       });
-      if (!resposta.ok) throw new Error("Não foi possível enviar a confirmação.");
-
       form.reset();
       status.className = "rsvp-status success";
       status.textContent = rsvp.mensagemSucesso;
@@ -276,7 +292,7 @@ function configurarRSVP() {
   });
 }
 
-// ---- Caixinha de recados anônimos (Formspree) ----
+// ---- Caixinha de recados anônimos ----
 
 function configurarCaixinhaRecados() {
   const { recados } = CONFIG;
@@ -284,7 +300,7 @@ function configurarCaixinhaRecados() {
   const form = document.getElementById("caixinha-form");
   const status = document.getElementById("caixinha-status");
 
-  if (!recados || !recados.ativa || !recados.endpoint || !section || !form) return;
+  if (!recados || !recados.ativa || !CONFIG.formularios?.endpoint || !section || !form) return;
 
   section.hidden = false;
   form.addEventListener("submit", async (event) => {
@@ -295,19 +311,18 @@ function configurarCaixinhaRecados() {
     }
 
     const button = form.querySelector("button[type='submit']");
+    const campos = Object.fromEntries(new FormData(form).entries());
     button.disabled = true;
     button.textContent = "Enviando...";
     status.className = "caixinha-status";
     status.textContent = "";
 
     try {
-      const resposta = await fetch(recados.endpoint, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+      await enviarParaPlanilha({
+        tipo: "recado",
+        categoria: campos.categoria,
+        mensagem: campos.mensagem,
       });
-      if (!resposta.ok) throw new Error("Não foi possível enviar o recado.");
-
       form.reset();
       status.className = "caixinha-status success";
       status.textContent = recados.mensagemSucesso;

@@ -16,16 +16,18 @@ const CONFIG = {
     mensagemConfirmacao: "Olá! Acabei de fazer meu presente para vocês. Aguardo confirmação! 😊",
   },
 
-  // RSVP: ao criar o formulário no Formspree, preencha o endpoint e altere ativa para true.
+  // Formulários registrados na planilha da Letícia via Google Apps Script.
+  formularios: {
+    endpoint: "https://script.google.com/macros/s/AKfycbwbAcgiXhhSWS6dosaivEIkEWHQNXWL2LOvtnAiD3sC8sDB1JcY52qSCzvGvlkjkrVF/exec",
+  },
+
   rsvp: {
     ativa: true,
-    endpoint: "https://formspree.io/f/mdaqrnzk",
     mensagemSucesso: "Presença registrada! Estamos muito felizes por celebrar esse dia com você.",
   },
 
   recados: {
     ativa: true,
-    endpoint: "https://formspree.io/f/xqerrkrz",
     mensagemSucesso: "Recebemos seu carinho. Obrigado por fazer parte desse momento!",
   },
 
