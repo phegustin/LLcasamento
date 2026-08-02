@@ -982,7 +982,7 @@ h3 {
   .hero-copy .monograma { width: clamp(5.25rem, 20vw, 7rem); margin-bottom: 0.65rem; }
   .hero-copy .monograma img { filter: invert(1); }
   .hero-copy .nomes-casal { color: var(--cor-branco); font-size: clamp(1.9rem, 8vw, 2.6rem); text-shadow: 0 1px 12px rgba(33, 23, 19, 0.18); }
-  .hero-copy .data-casamento { margin-bottom: 1rem; color: var(--cor-primaria-escura); font-size: 0.72rem; letter-spacing: 0.12em; }
+  .hero-copy .data-casamento { margin-bottom: 1rem; color: var(--cor-branco); font-size: 0.72rem; letter-spacing: 0.12em; }
   .hero-copy .mensagem-boas-vindas { margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.94); font-size: 0.82rem; line-height: 1.55; }
   .hero-copy .btn-hero { padding: 0.75rem 1.2rem; background: var(--cor-branco); color: var(--cor-primaria); font-size: 0.78rem; }
   .hero-copy .btn-hero:hover { background: var(--cor-destaque-clara); color: var(--cor-primaria-escura); }
