@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   configurarFiltros();
   configurarScrollSuave();
   configurarRSVP();
+  configurarCaixinhaRecados();
   configurarAnimações();
 });
 
@@ -271,6 +272,51 @@ function configurarRSVP() {
     } finally {
       button.disabled = false;
       button.textContent = "Confirmar presença";
+    }
+  });
+}
+
+// ---- Caixinha de recados anônimos (Formspree) ----
+
+function configurarCaixinhaRecados() {
+  const { recados } = CONFIG;
+  const section = document.getElementById("caixinha-recados");
+  const form = document.getElementById("caixinha-form");
+  const status = document.getElementById("caixinha-status");
+
+  if (!recados || !recados.ativa || !recados.endpoint || !section || !form) return;
+
+  section.hidden = false;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    button.textContent = "Enviando...";
+    status.className = "caixinha-status";
+    status.textContent = "";
+
+    try {
+      const resposta = await fetch(recados.endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!resposta.ok) throw new Error("Não foi possível enviar o recado.");
+
+      form.reset();
+      status.className = "caixinha-status success";
+      status.textContent = recados.mensagemSucesso;
+    } catch (erro) {
+      status.className = "caixinha-status error";
+      status.textContent = "Não foi possível enviar seu recado agora. Tente novamente em alguns instantes.";
+    } finally {
+      button.disabled = false;
+      button.innerHTML = "Enviar com carinho <span aria-hidden=\"true\">♥</span>";
     }
   });
 }

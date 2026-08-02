@@ -25,7 +25,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>" />
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="css/style.css?v=20260731-4" />
+  <link rel="stylesheet" href="css/style.css?v=20260731-5" />
 </head>
 <body>
   <!-- ============================
@@ -47,6 +47,7 @@
         <a href="#dress-code">Dress code</a>
         <a href="#rsvp" id="nav-rsvp" hidden>Confirmar presença</a>
         <a href="#presentes">Presentes</a>
+        <a href="#caixinha-recados">Caixinha de recados</a>
       </nav>
     </div>
   </header>
@@ -306,6 +307,37 @@
   </div>
 
   <!-- ============================
+       CAIXINHA DE RECADOS ANÔNIMOS
+       ============================ -->
+  <section class="caixinha-section" id="caixinha-recados" hidden>
+    <div class="caixinha-container animate-on-scroll">
+      <p class="section-kicker">Para guardar no coração</p>
+      <h2>Deixe um carinho para nós</h2>
+      <p class="section-subtitle">Uma lembrança, um conselho para essa nova fase ou uma mensagem que aqueça nosso coração.</p>
+
+      <form class="caixinha-form" id="caixinha-form" novalidate>
+        <div class="caixinha-field">
+          <label for="recado-categoria">Que tipo de recado você quer deixar? <span>(opcional)</span></label>
+          <select id="recado-categoria" name="categoria">
+            <option value="">Escolha uma opção</option>
+            <option value="Mensagem de carinho">Mensagem de carinho</option>
+            <option value="Conselho para a vida a dois">Conselho para a vida a dois</option>
+            <option value="Lembrança com o casal">Lembrança com o casal</option>
+          </select>
+        </div>
+        <div class="caixinha-field">
+          <label for="recado-mensagem">Sua mensagem</label>
+          <textarea id="recado-mensagem" name="mensagem" rows="5" placeholder="Escreva com carinho..." required></textarea>
+        </div>
+        <input class="campo-invisivel" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn-caixinha" type="submit">Enviar com carinho <span aria-hidden="true">♥</span></button>
+        <p class="caixinha-status" id="caixinha-status" aria-live="polite"></p>
+      </form>
+      <p class="caixinha-privacidade">Sua mensagem será recebida em particular por nós.</p>
+    </div>
+  </section>
+
+  <!-- ============================
        RECADO AOS CONVIDADOS
        ============================ -->
   <section class="recado-section" id="recado">
@@ -343,13 +375,13 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
   <!-- Configuração (dados do casal) -->
-  <script src="data/config.js?v=20260731-4"></script>
+  <script src="data/config.js?v=20260731-5"></script>
 
   <!-- Gerador de código PIX -->
   <script src="js/pix.js?v=20260731-2"></script>
 
   <!-- Script principal -->
-  <script src="js/main.js?v=20260731-5"></script>
+  <script src="js/main.js?v=20260731-6"></script>
 
   <!-- Menu mobile toggle -->
   <script>

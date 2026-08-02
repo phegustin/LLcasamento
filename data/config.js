@@ -23,6 +23,12 @@ const CONFIG = {
     mensagemSucesso: "Presença registrada! Estamos muito felizes por celebrar esse dia com você.",
   },
 
+  recados: {
+    ativa: true,
+    endpoint: "https://formspree.io/f/xqerrkrz",
+    mensagemSucesso: "Recebemos seu carinho. Obrigado por fazer parte desse momento!",
+  },
+
   evento: {
     celebracao: {
       horario: "10:00h",
