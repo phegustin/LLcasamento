@@ -1,0 +1,740 @@
+/* ============================================================
+   ESTILOS DO LINK NA BIO (LLCASAMENTO)
+   Mesma identidade visual elegante do site principal
+   ============================================================ */
+
+:root {
+  /* Paleta do casamento */
+  --cor-primaria: #6b8e6f;        /* Verde sálvia */
+  --cor-primaria-escura: #2d3a2e; /* Verde floresta escuro */
+  --cor-primaria-clara: #a8c0ab;  /* Verde claro */
+  --cor-destaque: #c9a961;        /* Dourado suave */
+  --cor-destaque-clara: #e8d9a8;  /* Dourado claro */
+
+  /* Neutros e superfícies */
+  --cor-fundo-pagina: #ede7dd;
+  --cor-card: #faf7f2;
+  --cor-card-alt: #f2ede3;
+  --cor-branco: #ffffff;
+  --cor-texto: #2d3a2e;
+  --cor-texto-suave: #636b64;
+
+  /* Tipografia */
+  --fonte-titulo: 'Cormorant Garamond', Georgia, serif;
+  --fonte-corpo: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Sombras e bordas */
+  --sombra-card: 0 20px 60px rgba(45, 58, 46, 0.14), 0 4px 16px rgba(45, 58, 46, 0.06);
+  --sombra-botao: 0 6px 20px rgba(45, 58, 46, 0.07);
+  --sombra-botao-hover: 0 12px 28px rgba(45, 58, 46, 0.15);
+  --sombra-destaque: 0 10px 26px rgba(45, 58, 46, 0.22);
+  --raio-card: 28px;
+  --raio-botao: 20px;
+}
+
+/* ============================================================
+   RESET E BASE
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo-pagina);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.5rem 1rem 2.5rem;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================================
+   FUNDO AMBIENTE DECORATIVO
+   ============================================================ */
+
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 0%, #f7f3eb 0%, #e7dfd1 100%);
+}
+
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+}
+
+.bg-glow-1 {
+  width: 420px;
+  height: 420px;
+  background: var(--cor-primaria-clara);
+  top: -120px;
+  right: -100px;
+}
+
+.bg-glow-2 {
+  width: 380px;
+  height: 380px;
+  background: var(--cor-destaque-clara);
+  bottom: -100px;
+  left: -100px;
+}
+
+/* ============================================================
+   CONTAINER E CARD PRINCIPAL (LINKTREE)
+   ============================================================ */
+
+.bio-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  margin: auto;
+}
+
+.bio-card {
+  background: var(--cor-card);
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+  border: 1px solid rgba(201, 169, 97, 0.25);
+  overflow: hidden;
+  animation: cardFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   TOPO: FOTO DE CAPA + MONOGRAMA CENTRALIZADO
+   ============================================================ */
+
+.bio-header {
+  position: relative;
+  text-align: center;
+}
+
+.cover-container {
+  position: relative;
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  background-color: var(--cor-primaria-escura);
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scale(1.02);
+  filter: saturate(0.95) contrast(1.02);
+  transition: transform 0.8s ease;
+}
+
+.bio-card:hover .cover-image {
+  transform: scale(1.05);
+}
+
+/* Degradê suave que integra a foto de capa ao fundo creme do card */
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 37, 29, 0.22) 0%,
+    rgba(45, 58, 46, 0.12) 45%,
+    rgba(250, 247, 242, 0.82) 86%,
+    var(--cor-card) 100%
+  );
+}
+
+/* Botão de compartilhar no canto superior direito */
+.btn-share-top {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--cor-primaria-escura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
+}
+
+.btn-share-top:hover {
+  background: var(--cor-branco);
+  transform: scale(1.06);
+  color: var(--cor-primaria);
+}
+
+/* Medalhão do Monograma centralizado sobrepondo a capa */
+.monograma-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: -58px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.monograma-badge {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #faf7f2 100%);
+  box-shadow:
+    0 10px 28px rgba(45, 58, 46, 0.16),
+    0 0 0 5px var(--cor-card),
+    0 0 0 6.5px rgba(201, 169, 97, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  transition: transform 0.35s ease;
+}
+
+.monograma-badge:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.monograma-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* O Ativo 5.png é preto com fundo transparente; deixamos no tom verde-escuro do casamento */
+  filter: brightness(0) saturate(100%) invert(18%) sepia(13%) saturate(765%) hue-rotate(77deg) brightness(95%) contrast(90%);
+}
+
+.monograma-fallback {
+  font-family: var(--fonte-titulo);
+  font-size: 2.1rem;
+  font-style: italic;
+  color: var(--cor-primaria-escura);
+}
+
+/* Textos de Perfil */
+.bio-profile {
+  padding: 0.25rem 1.75rem 0.5rem;
+}
+
+.bio-date {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.bio-title {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.1rem, 6vw, 2.65rem);
+  font-weight: 600;
+  color: var(--cor-primaria-escura);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.55rem;
+}
+
+.hashtag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  background: var(--cor-card-alt);
+  border: 1px solid rgba(201, 169, 97, 0.35);
+  color: var(--cor-primaria-escura);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.hashtag-pill:hover {
+  background: var(--cor-destaque-clara);
+  border-color: var(--cor-destaque);
+  transform: translateY(-1px);
+}
+
+.hashtag-pill svg {
+  color: var(--cor-destaque);
+}
+
+.bio-message {
+  font-size: 0.92rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Divisor ornamental */
+.divisor-ornamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.1rem auto 1.25rem;
+  color: var(--cor-destaque);
+  font-size: 0.85rem;
+}
+
+.divisor-ornamento::before,
+.divisor-ornamento::after {
+  content: '';
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cor-destaque-clara), transparent);
+}
+
+/* ============================================================
+   LISTA DE LINKS / BOTÕES
+   ============================================================ */
+
+.links-section {
+  padding: 0 1.35rem 1.5rem;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.link-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.15rem;
+  background: var(--cor-branco);
+  border-radius: var(--raio-botao);
+  border: 1px solid rgba(107, 142, 111, 0.22);
+  box-shadow: var(--sombra-botao);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: linkAppear 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes linkAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-botao-hover);
+  border-color: var(--cor-primaria);
+}
+
+.link-card:active {
+  transform: scale(0.985);
+}
+
+/* Botão em Destaque (ex: Álbum Compartilhado) */
+.link-card.is-featured {
+  background: linear-gradient(135deg, var(--cor-primaria-escura) 0%, #3d5240 100%);
+  color: var(--cor-branco);
+  border-color: rgba(201, 169, 97, 0.45);
+  box-shadow: var(--sombra-destaque);
+}
+
+.link-card.is-featured:hover {
+  border-color: var(--cor-destaque);
+  box-shadow: 0 14px 32px rgba(45, 58, 46, 0.3);
+}
+
+/* Ícone à esquerda do botão */
+.link-icon-box {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--cor-card-alt);
+  color: var(--cor-primaria-escura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.link-card:hover .link-icon-box {
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  transform: rotate(-4deg) scale(1.05);
+}
+
+.link-card.is-featured .link-icon-box {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--cor-destaque-clara);
+  border: 1px solid rgba(201, 169, 97, 0.35);
+}
+
+.link-card.is-featured:hover .link-icon-box {
+  background: var(--cor-destaque);
+  color: var(--cor-primaria-escura);
+}
+
+.link-icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Conteúdo de texto do botão */
+.link-body {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.link-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+  margin-bottom: 0.15rem;
+}
+
+.link-card.is-featured .link-tag {
+  color: var(--cor-destaque-clara);
+}
+
+.link-title {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--cor-primaria-escura);
+  margin-bottom: 0.2rem;
+}
+
+.link-card.is-featured .link-title {
+  color: var(--cor-branco);
+}
+
+.link-subtitle {
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.35;
+}
+
+.link-card.is-featured .link-subtitle {
+  color: rgba(250, 247, 242, 0.82);
+}
+
+/* Seta à direita */
+.link-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-primaria);
+  background: var(--cor-card);
+  transition: all 0.3s ease;
+}
+
+.link-card:hover .link-arrow {
+  transform: translateX(3px);
+  background: var(--cor-primaria-clara);
+  color: var(--cor-primaria-escura);
+}
+
+.link-card.is-featured .link-arrow {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--cor-destaque-clara);
+}
+
+.link-card.is-featured:hover .link-arrow {
+  background: var(--cor-destaque);
+  color: var(--cor-primaria-escura);
+}
+
+/* ============================================================
+   RODAPÉ DO CARD
+   ============================================================ */
+
+.bio-footer {
+  padding: 0.75rem 1.5rem 1.75rem;
+  text-align: center;
+  border-top: 1px solid rgba(201, 169, 97, 0.18);
+  background: linear-gradient(180deg, var(--cor-card) 0%, var(--cor-card-alt) 100%);
+}
+
+.btn-qrcode-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 50px;
+  background: var(--cor-branco);
+  border: 1px solid rgba(107, 142, 111, 0.3);
+  color: var(--cor-primaria-escura);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 2px 8px rgba(45, 58, 46, 0.05);
+  transition: all 0.25s ease;
+}
+
+.btn-qrcode-footer:hover {
+  border-color: var(--cor-primaria);
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+}
+
+.footer-note {
+  font-size: 0.78rem;
+  color: var(--cor-texto-suave);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   MODAL DE QR CODE / COMPARTILHAMENTO
+   ============================================================ */
+
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.28s ease;
+}
+
+.qr-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 37, 29, 0.65);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.qr-modal-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 370px;
+  background: var(--cor-card);
+  border-radius: 24px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 169, 97, 0.4);
+  transform: translateY(16px) scale(0.96);
+  transition: transform 0.28s ease;
+}
+
+.qr-modal.active .qr-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.qr-modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--cor-card-alt);
+  color: var(--cor-texto-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.qr-modal-close:hover {
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+}
+
+.qr-modal-monograma {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.6rem;
+}
+
+.qr-modal-monograma img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(13%) saturate(765%) hue-rotate(77deg) brightness(95%) contrast(90%);
+}
+
+.qr-modal-content h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  color: var(--cor-primaria-escura);
+  margin-bottom: 0.35rem;
+}
+
+.qr-modal-subtitle {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+  margin-bottom: 1.2rem;
+}
+
+.qr-box {
+  display: inline-flex;
+  padding: 1rem;
+  background: var(--cor-branco);
+  border-radius: 16px;
+  border: 2px dashed var(--cor-primaria-clara);
+  margin-bottom: 1.25rem;
+}
+
+.btn-copy-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 14px;
+  background: var(--cor-primaria-escura);
+  color: var(--cor-branco);
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: all 0.25s ease;
+}
+
+.btn-copy-link:hover {
+  background: var(--cor-primaria);
+}
+
+/* ============================================================
+   TOAST DE FEEDBACK
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--cor-primaria-escura);
+  color: var(--cor-branco);
+  padding: 0.7rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(201, 169, 97, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVIDADE MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    background: var(--cor-card);
+  }
+
+  .bio-wrapper {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .bio-card {
+    border-radius: 0;
+    border: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .links-section {
+    flex: 1;
+    padding: 0 1.15rem 1.5rem;
+  }
+
+  .cover-container {
+    height: 220px;
+  }
+}
