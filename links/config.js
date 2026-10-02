@@ -36,8 +36,8 @@ const CONFIG_LINKS = {
       tag: "📸 Registros da Festa",
       titulo: "Álbum Compartilhado",
       subtitulo: "Envie e veja as fotos e vídeos do nosso casamento",
-      // 👇 Cole aqui o link do seu álbum (Google Fotos, WedShoots, Drive, iCloud, etc.)
-      url: "https://photos.google.com/",
+      // 👇 Cole aqui o link do seu álbum (Dots, Google Fotos, WedShoots, Drive, iCloud, etc.)
+      url: "https://web.dotstheapp.com/a?group=2564726&dlBy=phekolt&code=hzEk5MxM1wKN&utm_source=guest&utm_medium=share&utm_campaign=guest_event_album",
     },
     {
       id: "filtro-instagram",
@@ -48,7 +48,7 @@ const CONFIG_LINKS = {
       titulo: "Filtro do Instagram",
       subtitulo: "Toque para abrir a câmera e usar nos seus Stories",
       // 👇 Cole aqui o link do seu filtro ou perfil do Instagram
-      url: "https://www.instagram.com/",
+      url: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTkyNzE1OTY0MTA3Mjcz?story_media_id=3997686307270025578_261201818&stkn=cjQ1c3VsaWV5OGwz",
     },
 
     // ==========================================================
