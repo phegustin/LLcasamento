@@ -1,0 +1,4 @@
+# Configuração automática para o Netlify publicar a pasta "links" (Link na Bio)
+# (Não afeta em nada o site principal nem o GitHub Pages)
+[build]
+  publish = "links"
